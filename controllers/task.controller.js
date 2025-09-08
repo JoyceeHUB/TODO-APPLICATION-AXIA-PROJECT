@@ -82,7 +82,7 @@ const deleteTask = async (req, res) => {
     if (task.user.toString() !== req.user._id.toString())
       return res.status(403).json({ message: "Forbidden" });
 
-    await task.remove();
+    await task.deleteOne();
     res.json({ message: "Task deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
